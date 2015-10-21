@@ -1,0 +1,38 @@
+Commands:
+
+/aa trail <effect>
+  To be used while holding a bow or stack of arrows. Holding a stack of arrows, it add a trail to those arrows when shot from any bow. Holding a bow, it will make ALL arrows have that trail.
+
+/aa block <blockname>
+  To be used while holding a bow or stack of arrows. Holding a stack of arrows, it will place a block where the arrow lands shot from any bow. Holding a bow, it will make ALL arrows place a block where they land.
+
+/aa potion <potionname>
+  To be used while holding a bow or stack of arrows. Holding a stack of arrows, it will infect the arrow with that potion when shot from any bow. If it hits a target, it will give them that potion, otherwise, the potion will break like someone threw it once the arrow hits the ground. Holding a bow, it will apply the same thing but to ALL arrows shot from the bow.
+
+/aa clear
+  Clear all effects/blocks/potions on an arrow or bow
+
+/aa reload
+  Reload the plugin's configuration file
+
+
+Permissions:
+
+arrows.admin - Access to all commands and trails and blocks and potions
+arrows.arrow - Access to /aa command
+
+arrows.trail - Access to /aa trail command
+arrows.trail.bypass - Access to all trails
+arrows.trail.allow.TRAIL_NAME - Access to a certain trail
+
+arrows.block - Access to /aa block command
+arrows.block.bypass - Access to all blocks
+arrows.block.allow.BLOCK_NAME - Access to a certain block
+
+arrows.potion - Access to /aa potion command
+arrows.potion.bypass - Access to all potions
+arrows.potion.allow.POTION_NAME - Access to a certain potion
+
+arrows.clear - Access to /aa clear command
+
+arrows.reload - Access to /aa reload command

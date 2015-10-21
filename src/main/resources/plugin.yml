@@ -1,0 +1,7 @@
+name: AdvancedArrows
+main: me.HeyAwesomePeople.AdvancedArrows.AdvancedArrows
+version: 1.0.0
+commands:
+  advancedarrows:
+    aliases: [aa, advanceda, aarrow, aarrows]
+    description: Main command for Advanced Arrows
