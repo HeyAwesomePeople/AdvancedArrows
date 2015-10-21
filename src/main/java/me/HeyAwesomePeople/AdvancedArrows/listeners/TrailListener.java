@@ -23,7 +23,7 @@ public class TrailListener implements Listener {
             if (e.getEntity().getShooter() instanceof Player) {
                 Player p = (Player) e.getEntity().getShooter();
                 if (p.getItemInHand().getType().equals(org.bukkit.Material.BOW)) {
-                    if (p.getItemInHand().getItemMeta().getLore().contains(Methods.traileffect)) {
+                    if (p.getItemInHand().getItemMeta().getLore().contains(plugin.methods.traileffect)) {
                         for (String s : p.getItemInHand().getItemMeta().getLore()) {
                             if (plugin.trails.doesEffectExist(s)) {
                                 createTask((Arrow) e.getEntity(), s);

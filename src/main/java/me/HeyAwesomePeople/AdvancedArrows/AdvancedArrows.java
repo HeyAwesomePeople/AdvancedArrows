@@ -23,14 +23,11 @@ public class AdvancedArrows extends JavaPlugin implements CommandExecutor {
     public static AdvancedArrows instance;
     public BasicEnchantment basicEnch;
 
-    public HashMap<ItemStack, String> trailing = new HashMap<ItemStack, String>();
-    public HashMap<ItemStack, String> blocking = new HashMap<ItemStack, String>();
-    public HashMap<ItemStack, String> potioning = new HashMap<ItemStack, String>();
-
     public FileConfiguration config;
 
     public TrailCreator trails;
     public PotionCreator potions;
+    public Methods methods;
 
     @Override
     public void onEnable() {
@@ -38,6 +35,7 @@ public class AdvancedArrows extends JavaPlugin implements CommandExecutor {
         config = this.getConfig();
         trails = new TrailCreator();
         potions = new PotionCreator();
+        methods = new Methods();
 
         this.allowEnchants();
 
@@ -128,9 +126,7 @@ public class AdvancedArrows extends JavaPlugin implements CommandExecutor {
                 }
 
                 if (args[0].equalsIgnoreCase("clear")) {
-                    if (trailing.containsKey(p.getItemInHand())) {
-                        trailing.remove(p.getItemInHand());
-                    }
+                    methods.removeAnyEffects(p.getItemInHand());
                     p.sendMessage(ChatColor.GOLD + "All effects removed.");
                     return false;
                 }
@@ -144,7 +140,7 @@ public class AdvancedArrows extends JavaPlugin implements CommandExecutor {
                             p.sendMessage(ChatColor.GREEN + "Available Trails: " + trails.getAllEffects());
                             return false;
                         }
-                        trailing.put(p.getItemInHand(), args[1]);
+                        methods.setTrail(p.getItemInHand(), args[1]);
                         return false;
                     } else {
                         p.sendMessage(ChatColor.RED + "Invalid argument count!");
@@ -166,7 +162,11 @@ public class AdvancedArrows extends JavaPlugin implements CommandExecutor {
                         p.sendMessage(ChatColor.GREEN + "Available Potions: " + potions.getAllEffects());
                         return false;
                     } else if (args.length == 2) {
-                        //TODO set potion
+                        if (!this.potions.doesPotionExist(args[1])) {
+                            p.sendMessage(ChatColor.GREEN + "Available Trails: " + potions.getAllEffects());
+                            return false;
+                        }
+                        methods.setPotion(p.getItemInHand(), args[1]);
                         return false;
                     } else {
                         p.sendMessage(ChatColor.RED + "Invalid argument count!");

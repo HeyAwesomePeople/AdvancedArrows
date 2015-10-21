@@ -12,15 +12,15 @@ import java.util.List;
 public class Methods {
     private AdvancedArrows plugin = AdvancedArrows.instance;
 
-    public static String traileffect = ChatColor.GOLD + "[AA] Effect";
-    public static String potioneffect = ChatColor.GOLD + "[AA] Potion";
+    public String traileffect = ChatColor.GOLD + "[AA] Effect: ";
+    public String potioneffect = ChatColor.GOLD + "[AA] Potion: ";
+    public String blockeffect = ChatColor.GOLD + "[AA] Block: ";
 
     //* ****** For Trails ****** *//
     public void setTrail(ItemStack i, String trail) {
         ItemMeta im = i.getItemMeta();
         List<String> list = new ArrayList<String>();
-        list.add(traileffect);
-        list.add(trail);
+        list.add(traileffect + trail);
         im.setLore(list);
         i.setItemMeta(im);
     }
@@ -28,8 +28,19 @@ public class Methods {
     public void setPotion(ItemStack i, String potion) {
         ItemMeta im = i.getItemMeta();
         List<String> list = new ArrayList<String>();
-        list.add(potioneffect);
-        list.add(potion);
+        list.add(potioneffect + potion);
+        im.setLore(list);
+        i.setItemMeta(im);
+    }
+
+    public void removeAnyEffects(ItemStack i) {
+        ItemMeta im = i.getItemMeta();
+        List<String> list = new ArrayList<String>(im.getLore());
+        for (String s : new ArrayList<String>(list)) {
+            if (s.contains(traileffect) || s.contains(potioneffect)) {
+                list.remove(s);
+            }
+        }
         im.setLore(list);
         i.setItemMeta(im);
     }

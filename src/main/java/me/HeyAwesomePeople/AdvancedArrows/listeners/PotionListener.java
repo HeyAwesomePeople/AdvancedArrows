@@ -1,7 +1,6 @@
 package me.HeyAwesomePeople.AdvancedArrows.listeners;
 
 import me.HeyAwesomePeople.AdvancedArrows.AdvancedArrows;
-import me.HeyAwesomePeople.AdvancedArrows.Methods;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -25,7 +24,7 @@ public class PotionListener implements Listener {
             if (e.getEntity().getShooter() instanceof Player) {
                 Player p = (Player) e.getEntity().getShooter();
                 if (p.getItemInHand().getType().equals(org.bukkit.Material.BOW)) {
-                    if (p.getItemInHand().getItemMeta().getLore().contains(Methods.potioneffect)) {
+                    if (p.getItemInHand().getItemMeta().getLore().contains(plugin.methods.potioneffect)) {
                         for (String s : p.getItemInHand().getItemMeta().getLore()) {
                             if (plugin.potions.doesPotionExist(s)) {
                                 createTask((Arrow) e.getEntity(), s);
