@@ -13,6 +13,7 @@ public class Methods {
     private AdvancedArrows plugin = AdvancedArrows.instance;
 
     public static String traileffect = ChatColor.GOLD + "[AA] Effect";
+    public static String potioneffect = ChatColor.GOLD + "[AA] Potion";
 
     //* ****** For Trails ****** *//
     public void setTrail(ItemStack i, String trail) {
@@ -20,6 +21,15 @@ public class Methods {
         List<String> list = new ArrayList<String>();
         list.add(traileffect);
         list.add(trail);
+        im.setLore(list);
+        i.setItemMeta(im);
+    }
+
+    public void setPotion(ItemStack i, String potion) {
+        ItemMeta im = i.getItemMeta();
+        List<String> list = new ArrayList<String>();
+        list.add(potioneffect);
+        list.add(potion);
         im.setLore(list);
         i.setItemMeta(im);
     }

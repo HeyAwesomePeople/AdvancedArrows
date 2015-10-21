@@ -2,6 +2,8 @@ package me.HeyAwesomePeople.AdvancedArrows;
 
 
 import me.HeyAwesomePeople.AdvancedArrows.enchantments.BasicEnchantment;
+import me.HeyAwesomePeople.AdvancedArrows.types.PotionCreator;
+import me.HeyAwesomePeople.AdvancedArrows.types.TrailCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -28,12 +30,14 @@ public class AdvancedArrows extends JavaPlugin implements CommandExecutor {
     public FileConfiguration config;
 
     public TrailCreator trails;
+    public PotionCreator potions;
 
     @Override
     public void onEnable() {
         instance = this;
         config = this.getConfig();
         trails = new TrailCreator();
+        potions = new PotionCreator();
 
         this.allowEnchants();
 
@@ -159,7 +163,7 @@ public class AdvancedArrows extends JavaPlugin implements CommandExecutor {
                     }
                 } else if (args[0].equalsIgnoreCase("potion")) {
                     if (args.length == 1) {
-                        //TODO show available potions
+                        p.sendMessage(ChatColor.GREEN + "Available Potions: " + potions.getAllEffects());
                         return false;
                     } else if (args.length == 2) {
                         //TODO set potion

@@ -1,4 +1,4 @@
-package me.HeyAwesomePeople.AdvancedArrows;
+package me.HeyAwesomePeople.AdvancedArrows.types;
 
 
 import me.HeyAwesomePeople.AdvancedArrows.libs.ParticleEffect;
